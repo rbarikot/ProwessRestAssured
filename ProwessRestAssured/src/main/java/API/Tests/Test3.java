@@ -14,6 +14,7 @@ public class Test3 {
         ApplicationRequestBuilder apt=new ApplicationRequestBuilder();
         System.out.println(apt.buildApplicationRequest2());
         System.out.println(apt.buildApplicationRequest3());
+        System.out.println(apt.buildStudentDetails());
 
     }
 }

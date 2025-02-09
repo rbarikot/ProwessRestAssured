@@ -9,15 +9,15 @@ import java.io.IOException;
 public class ApplicationRequestBuilder {
     private static final ObjectMapper mapper = new ObjectMapper();
     public String buildApplicationRequest() throws IOException {
-        ApplicationRequest apr= ReturnApplicationRequest.getApplicationRequest();
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(apr);
+       return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(ReturnApplicationRequest.getApplicationRequest());
     }
     public String buildApplicationRequest2() throws IOException {
-        ApplicationRequest apr= ReturnApplicationRequest.getApplicationRequest_excel();
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(apr);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(ReturnApplicationRequest.getApplicationRequest_excel());
     }
     public String buildApplicationRequest3() throws IOException {
-        ApplicationRequest apr= ReturnApplicationRequest.getApplicationRequest_excel_faker();
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(apr);
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(ReturnApplicationRequest.getApplicationRequest_excel_faker());
+    }
+    public String buildStudentDetails() throws IOException {
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(ReturnApplicationRequest.getStudentDetails());
     }
 }

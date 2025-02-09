@@ -15,4 +15,7 @@ public class FakerUtil {
     public static String getRandomBusiness() {
         return faker.business().toString();
     }
+    public static int getRandomAge() {
+        return faker.number().numberBetween(0, 100);
+    }
 }
