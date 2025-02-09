@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Test3 {
+public class Test3 extends BaseTest{
     @Test
     public void getPath() throws IOException {
         String url=ConfigReader.getProperty("baseURI");

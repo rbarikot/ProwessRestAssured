@@ -10,13 +10,13 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Test2 {
+public class Test2 extends BaseTest {
     @Test
     public void putImplementation() throws IOException {
 
             RestUtil rs=new RestUtil();
             ApplicationRequestBuilder apt=new ApplicationRequestBuilder();
-            Response res=rs.putMethod(frameworkConstant.baseURI,frameworkConstant.username,frameworkConstant.password, apt.buildApplicationRequest(), "/da/rest/deploy/application/allPagedNew");
+            Response res=rs.putMethod(frameworkConstant.username,frameworkConstant.password, apt.buildApplicationRequest(), "/da/rest/deploy/application/allPagedNew");
             System.out.println(res.getStatusCode());
             System.out.println(res.getBody().prettyPrint());
         }

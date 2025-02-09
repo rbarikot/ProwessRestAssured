@@ -1,6 +1,7 @@
 package API.ReusableMethods;
 
 import API.constants.frameworkConstant;
+import API.exceptions.ConfigReaderException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,8 +14,8 @@ public class ConfigReader {
         try {
             FileInputStream file = new FileInputStream(frameworkConstant.ConfigPropertyPath);
             properties.load(file);
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load config file", e);
+        } catch (Exception e) {
+            throw new ConfigReaderException("Failed to load config file",e);
         }
     }
 
