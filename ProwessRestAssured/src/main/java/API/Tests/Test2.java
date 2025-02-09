@@ -8,9 +8,11 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class Test2 {
     @Test
-    public void putImplementation() throws JsonProcessingException {
+    public void putImplementation() throws IOException {
 
             RestUtil rs=new RestUtil();
             ApplicationRequestBuilder apt=new ApplicationRequestBuilder();

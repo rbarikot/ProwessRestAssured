@@ -1,16 +1,23 @@
 package API.builderClass;
 
+import API.ReturnPOJO.ReturnApplicationRequest;
 import API.pojo.ApplicationRequest;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.javafaker.Faker;
+
+import java.io.IOException;
 
 public class ApplicationRequestBuilder {
-
-    public String buildApplicationRequest() throws JsonProcessingException {
-        Faker faker = new Faker();
-        ObjectMapper mapper = new ObjectMapper();
-        ApplicationRequest apr=ApplicationRequest.builder().name(String.valueOf(faker.name())).description(String.valueOf(faker.business())).notificationID("00000000-0000-0000-0000-000000000000").build();
+    private static final ObjectMapper mapper = new ObjectMapper();
+    public String buildApplicationRequest() throws IOException {
+        ApplicationRequest apr= ReturnApplicationRequest.getApplicationRequest();
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(apr);
+    }
+    public String buildApplicationRequest2() throws IOException {
+        ApplicationRequest apr= ReturnApplicationRequest.getApplicationRequest_excel();
+        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(apr);
+    }
+    public String buildApplicationRequest3() throws IOException {
+        ApplicationRequest apr= ReturnApplicationRequest.getApplicationRequest_excel_faker();
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(apr);
     }
 }
