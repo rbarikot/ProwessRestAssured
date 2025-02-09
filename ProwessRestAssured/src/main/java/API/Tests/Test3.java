@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Test3 {
     @Test
     public void getPath() throws IOException {
-        String url=ConfigReader.getProperty("baseUrl");
+        String url=ConfigReader.getProperty("baseURI");
         System.out.println(url);
         ApplicationRequestBuilder apt=new ApplicationRequestBuilder();
         System.out.println(apt.buildApplicationRequest2());

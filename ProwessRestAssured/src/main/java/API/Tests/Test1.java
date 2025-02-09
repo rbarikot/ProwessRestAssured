@@ -1,5 +1,7 @@
 package API.Tests;
 
+import API.ReusableMethods.ConfigReader;
+import API.ReusableMethods.ResponseValidator;
 import API.ReusableMethods.RestUtil;
 import API.constants.frameworkConstant;
 import io.restassured.response.Response;
@@ -11,8 +13,10 @@ public class Test1 {
     public void getImplementation() {
 
             RestUtil rs=new RestUtil();
-            Response res=rs.getMethod(frameworkConstant.baseURI,frameworkConstant.username,frameworkConstant.password,"/da/rest/deploy/application");
+            String uri=ConfigReader.getProperty("baseURI");
+            Response res=rs.getMethod(uri,frameworkConstant.username,frameworkConstant.password,"/da/rest/deploy/application");
             System.out.println(res.getBody().asString());
-            Assert.assertEquals(res.getStatusCode(),200);
+            //Assert.assertEquals(res.getStatusCode(),200);
+            ResponseValidator.validateStatusCode(res,200);
         }
 }
