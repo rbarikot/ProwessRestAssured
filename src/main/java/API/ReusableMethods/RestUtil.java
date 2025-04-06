@@ -4,15 +4,17 @@ import API.exceptions.ApiException;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
+import static io.restassured.RestAssured.given;
+
 public class RestUtil {
     public Response putMethod(String username,String password,String put_body,String uri)
     {
-        return RestAssured.given().auth().basic(username,password).body(put_body).when().post(uri);
+        return given().auth().basic(username,password).body(put_body).when().post(uri);
     }
     public Response getMethod(String username,String password,String uri)
     {
         try {
-           Response response=RestAssured.given().auth().basic(username, password).when().get(uri);
+           Response response= given().auth().basic(username, password).when().get(uri);
            if(response.getStatusCode()!=200)
            {
                throw new ApiException("API returned error: " + response.statusCode());
@@ -26,7 +28,7 @@ public class RestUtil {
     public Response postMethod(String username,String password,String post_body,String uri)
     {
         try {
-            Response response= RestAssured.given().auth().basic(username, password).body(post_body).when().post(uri);
+            Response response= given().auth().basic(username, password).body(post_body).when().post(uri);
             if(response.getStatusCode()!=201)
             {
                 throw new ApiException("API returned error: " + response.statusCode());
@@ -39,6 +41,13 @@ public class RestUtil {
     }
     public Response  deleteMethod(String username,String password,String uri)
     {
-        return RestAssured.given().auth().basic(username,password).when().delete(uri);
+        return given().auth().basic(username,password).when().delete(uri);
+    }
+
+
+    //------------------------------------------*******************************---------------------------
+    public Response getMethodParallel(String username,String password,String uri)
+    {
+       return given().spec(RestAssuredConfig.getRequestSpec()).auth().basic(username,password).when().get(uri);
     }
 }
